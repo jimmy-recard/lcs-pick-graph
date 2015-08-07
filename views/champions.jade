@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  .row
+    .col-xs-12.text-center
+      
+      h1= title
+      ul.list-inline
+        each val in champions
+          li
+            a(href='/champions/'+val.name)
+              img(src='http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/'+val.picture)

@@ -1,0 +1,13 @@
+body {
+  padding: 50px;
+  font: 14px, Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+/* fix ul-li vertical margin for champion list view */
+li {
+  margin-top: 10px;
+}

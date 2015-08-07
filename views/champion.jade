@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  .row
+    a(href='/champions')
+      | Back to all champions
+    .col-xs-12
+      ul.list-inline
+        li
+          img(src='http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/'+champ.picture)
+        li
+          h1= champ.name
+    .col-xs-12.col-sm-6
+      h3 #{champ.name} was picked into...
+      if as.length
+        table.table.table-striped
+          thead
+            tr
+              th= 'Name'
+              th= 'Number of Picks'
+          tbody
+            each val in as
+              tr
+                td= val.name
+                td= val.count
+      else
+        p No data as of now.
+    .col-xs-12.col-sm-6
+      h3 Against #{champ.name} players picked...
+      if vs.length
+        table.table.table-striped
+          thead
+            tr
+              th= 'Name'
+              th= 'Number of Picks'
+          tbody
+            each val in vs
+              tr
+                td= val.name
+                td= val.count
+      else
+        p No data as of now.
