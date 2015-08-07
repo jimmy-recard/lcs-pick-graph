@@ -1,6 +1,6 @@
 {
   "name": "lcs-pick-graph",
-  "description": "A basic nodejs neo4j application which shows you which champions were picked into which champions in League of Legends LCS",
+  "description": "An example application to model League of Legends LCS champions picks in Neo4J",
   "version": "0.0.1",
   "private": false,
   "homepage": "https://github.com/jimmy-recard/lcs-pick-graph",
