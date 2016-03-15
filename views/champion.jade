@@ -2,7 +2,7 @@ extends layout
 
 block content
   .row
-    a(href='/champions')
+    a(href='/')
       | Back to all champions
     .col-xs-12
       ul.list-inline
@@ -21,12 +21,13 @@ block content
           tbody
             each val in as
               tr
-                td= val.name
+                td
+                  a(href=val.name)=val.name
                 td= val.count
       else
         p No data as of now.
     .col-xs-12.col-sm-6
-      h3 Against #{champ.name} players picked...
+      h3 Against #{champ.name}, players picked...
       if vs.length
         table.table.table-striped
           thead
@@ -36,7 +37,8 @@ block content
           tbody
             each val in vs
               tr
-                td= val.name
+                td
+                  a(href=val.name)=val.name
                 td= val.count
       else
         p No data as of now.

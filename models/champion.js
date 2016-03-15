@@ -21,7 +21,7 @@ db.createConstraint({
     } else {
         // constraint already exists
     }
-})
+});
 
 module.exports = {
 
@@ -90,7 +90,7 @@ module.exports = {
         return {
           name: val.c.properties.name,
           picture: val.c.properties.picture
-        }
+        };
       });
       callback(null, result);
     });
@@ -115,6 +115,9 @@ module.exports = {
     }, function(err, result) {
 
       if(err) return callback(err);
+      if(result.length === 0) {
+        return callback(new Error('Champion not found'));
+      }
 
       result = result[0].c.properties; // only return properties
       callback(null, result);
@@ -130,6 +133,8 @@ module.exports = {
    * @param date A simple string representation of the date of the pick
    */
   pickChamp: function(name, enemyTeam, date, callback) {
+
+    console.log(name, enemyTeam, date);
 
     // create team
     Team.create(enemyTeam, function(errors, results) {

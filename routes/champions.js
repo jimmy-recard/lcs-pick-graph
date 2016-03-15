@@ -18,36 +18,28 @@ router.get('/', function(req, res, next) {
 });
 
 // list data for a specific champ
-router.get('/:name', function(req, res, next) {
+router.get('/champions/:name', function(req, res, next) {
 
   champion.get(req.params.name, function(err, champData) {
 
     if(err) return next(err);
-    if(!champData) {
-      // no data
-      console.log('no data');
-    } else {
-      // now get data for that champ
-      champion.getPickedVersus(req.params.name, function(err, as) {
+    // now get data for that champ
+    champion.getPickedVersus(req.params.name, function(err, as) {
+      if(err) return next(err);
+
+      champion.getOpponents(req.params.name, function(err, vs) {
         if(err) return next(err);
 
-        champion.getOpponents(req.params.name, function(err, vs) {
-          if(err) return next(err);
-
-          res.render('champion', {
-            title: req.params.name,
-            champ: champData,
-            as: as,
-            vs: vs
-          });
-
+        res.render('champion', {
+          title: req.params.name,
+          champ: champData,
+          as: as,
+          vs: vs
         });
 
       });
-    }
-
+    });
   });
-
 });
 
 module.exports = router;

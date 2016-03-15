@@ -2,9 +2,26 @@ extends layout
 
 block content
   .row
+    .col-xs-12
+      .jumbotron
+        h2 An example application to model League of Legends LCS champions picks in&nbsp;
+          a(href='http://neo4j.com') Neo4J
+          |.
+        h3 How it works
+        p
+          | All data that was used was from either NA or EU LCS Summer Split 2015. Note that I don't enter all picks from an LCS game.
+          | For data reasons I skip the first 3 Picks as those can't or usually don't happen because of previous picks.
+          | Picks are stored in relation to the team/group of champions they were picked against.
+        h3 An example
+        p
+          | So if Blue Team picks Gragas and Purple Team picks Viktor and Alistar, both next picks of Blue Team are stored seperately, but in relation to all champions that were already picked by the enemy team (Purple Team), which are Viktor and Alistar.
+          | The same thing happens for the next two picks of Purple Team vs three made picks for Blue Team and so on.
+          | I wouldn't say this is a great data model, but it's the way I built it for now.
+        p If you are interested in the code, it's on&nbsp;
+          a(href='http://github.com/jimmy-recard/lcs-pick-graph.git') Github
+          |.
     .col-xs-12.text-center
-      
-      h1= title
+      h3= title
       ul.list-inline
         each val in champions
           li

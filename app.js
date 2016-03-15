@@ -4,7 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
 var champions = require('./routes/champions');
 var picks = require('./routes/picks');
 
@@ -27,8 +26,7 @@ require('./models/champion').update(function(errors, results) {
   console.log('Updated champions (%d)', results.length);
 });
 
-app.use('/', routes);
-app.use('/champions', champions);
+app.use('/', champions);
 app.use('/picks', picks);
 
 // catch 404 and forward to error handler
@@ -66,7 +64,6 @@ var config = require('./config/config');
 var server = app.listen(config.port || 3000, function(err, result) {
   if(err) throw err;
   console.log('Express running on port %d', server.address().port);
-})
-
+});
 
 module.exports = app;

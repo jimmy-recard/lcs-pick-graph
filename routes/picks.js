@@ -7,7 +7,7 @@ router.post('/', function(req, res, next) {
 
   var data = req.body;
 
-  if(!data.name || !data.enemyTeam || !data.date) {
+  if(!data.name || !data.enemyTeam || !Array.isArray(data.enemyTeam) || !data.date) {
     return res.status(400).json({error: 'Missing params'});
   }
 
